@@ -9,29 +9,32 @@ To develop a python control code to move the mobilerobot along the predefined pa
 
 ## Procedure
 
-Step1:
+Step 1:
 
-<br/>
+Use from robomaster import robot
 
-Step2:
+Step 2:
 
-<br/>
+Choose the x, y, z - axis movement distance (in meters).
 
-Step3:
+Step 3:
 
-<br/>
+Use ep_chassis.move() to move in a straight line.
 
-Step4:
+Step 4:
 
-<br/>
+Use time.sleep() to insert a break between movements.
 
-Step5:
+Step 5:
 
-<br/>
+Use ep_chassis.drive_speed() to control circular movement.
+
 
 ## Program
 ```python
-from robomaster import robot
+
+    
+    from robomaster import robot
 import time
 
 if __name__ == '__main__':
@@ -39,20 +42,62 @@ if __name__ == '__main__':
     ep_robot.initialize(conn_type="ap")
 
     ep_chassis = ep_robot.chassis
+    ep_led = ep_robot.led
+    ep_camera = ep_robot.camera
 
-    ## Write your code here
+    print("Video streaming started.....")
+    ep_camera.start_video_stream(display=True, resolution = camera.STREAM_360P)
 
+    ep_chassis.move(x=2.55, y=0, z=0, xy_speed=0.9).wait_for_completed()
+    ep_led.set_led(comp = "all",r=255,g=0,b=0,effect="on")
 
+    ep_chassis.move(x=0.4, y=0, z=80, xy_speed=0.8).wait_for_completed()
+    ep_led.set_led(comp = "all",r=128,g=0,b=0,effect="on")
 
-    
+    ep_chassis.move(x=0.75, y=0, z=0, xy_speed=0.8).wait_for_completed()
+    ep_led.set_led(comp = "all",r=0,g=128,b=128,effect="on")
+
+    ep_chassis.move(x=0.3, y=0, z=90, xy_speed=0.8).wait_for_completed()
+    ep_led.set_led(comp = "all",r=225,g=0,b=0,effect="on")
+
+    ep_chassis.move(x=1.5, y=0, z=0, xy_speed=0.8).wait_for_completed()
+    ep_led.set_led(comp = "all",r=225,g=0,b=225,effect="on")
+
+    ep_chassis.move(x=0, y=0, z=60, xy_speed=0.8).wait_for_completed()
+    ep_led.set_led(comp = "all",r=0,g=225,b=255,effect="on")
+
+    ep_chassis.move(x=0, y=1.58, z=0, xy_speed=0.8).wait_for_completed()
+    ep_led.set_led(comp = "all",r=128,g=0,b=0,effect="on")
+
+    ep_chassis.move(x=0, y=0, z=48, xy_speed=0.8).wait_for_completed()
+    ep_led.set_led(comp = "all",r=153,g=51,b=102,effect="on")
+
+    ep_chassis.move(x=0, y=1.55, z=0, xy_speed=0.8).wait_for_completed()
+    ep_led.set_led(comp = "all",r=0,g=0,b=128,effect="on")
+
+    ep_chassis.move(x=2.05, y=0, z=0, xy_speed=0.8).wait_for_completed()
+    ep_led.set_led(comp = "all",r=255,g=102,b=0,effect="on")
+
+    ep_chassis.move(x=0, y=0, z=80, xy_speed=0.8).wait_for_completed()
+    ep_led.set_led(comp = "all",r=153,g=51,b=0,effect="on")
+
+    ep_chassis.move(x=0.65, y=0, z=0, xy_speed=0.8).wait_for_completed()
+    ep_led.set_led(comp = "all",r=255,g=0,b=0,effect="on")
+
+    ep_chassis.move(x=0, y=0, z=360, xy_speed=0.8).wait_for_completed()
+    ep_led.set_led(comp = "all",r=255,g=0,b=255,effect="on")
+
+    time.sleep(4)
+    ep_camera.stop_video_stream()
+    print("Stopped video streaming.....")
+
     ep_robot.close()
+
 ```
 
 ## MobileRobot Movement Image:
 
-![robo](./img/robomaster.png)
-
-Insert image here
+![robo]!![image](https://github.com/user-attachments/assets/6841ff47-4090-4f96-999e-431b692a769f)
 
 
 <br/>
@@ -64,7 +109,7 @@ Insert image here
 
 Upload your video in Youtube and paste your video-id here
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
+[![IMAGE ALT TEXT HERE]https://youtu.be/Ad8Ld5oacUM?si=EaSTZJilc49jQ4Uj
 
 <br/>
 <br/>
